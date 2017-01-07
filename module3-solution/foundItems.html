@@ -1,0 +1,36 @@
+<style>
+  #foundItems { clear: left; }
+  table { table-layout: fixed; border: 1px solid silver; }
+  table td, th { padding: 3px; }
+  table > thead > tr { background-color: #dddddd; }
+  table > tbody > tr:nth-of-type(even) { background-color: #f0f0f0; }
+</style>
+
+<div id="foundItems">
+  <span ng-show="found.length == 0">Nothing found</span>
+
+  <table ng-show="found.length > 0">
+    <colgroup>
+      <col style="width: 200px;" />
+      <col style="width: 100px;" />
+      <col style="width: 400px;" />
+      <col style="width: 100px;" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Short Name</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in found">
+        <td>{{ item.name }}</td>
+        <td>{{ item.short_name }}</td>
+        <td>{{ item.description }}</td>
+        <td><button class="btn btn-secondary" ng-click="remove($index)">Remove</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
