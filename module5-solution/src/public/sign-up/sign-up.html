@@ -1,0 +1,56 @@
+<div class="container">
+
+<form name="frmSignUp" novalidate>
+  <table id="signUp">
+    <tbody>
+      <tr>
+        <th>First Name:</th>
+        <td>
+          <input type="text" name="firstName" ng-model="ctrl.user.firstName" required />
+          <span ng-if="frmSignUp.firstName.$error.required && frmSignUp.firstName.$touched">First Name is required</span>
+        </td>
+      </tr>
+      <tr>
+        <th>Last Name:</th>
+        <td>
+          <input type="text" name="lastName" ng-model="ctrl.user.lastName" required />
+          <span ng-if="frmSignUp.lastName.$error.required && frmSignUp.lastName.$touched">Last Name is required</span>
+        </td>
+      </tr>
+      <tr>
+        <th>Email Address:</th>
+        <td>
+          <input type="email" name="emailAddress" ng-model="ctrl.user.emailAddress" required />
+          <span ng-if="(frmSignUp.emailAddress.$error.required || frmSignUp.emailAddress.$invalid) && frmSignUp.emailAddress.$touched">Email Address is required</span>
+        </td>
+      </tr>
+      <tr>
+        <th>Phone Number:</th>
+        <td>
+          <input type="text" name="phoneNumber" ng-model="ctrl.user.phoneNumber" pattern="(\d{3})-(\d{3})-(\d{4})" required />
+          <span ng-if="(fromSignUp.phoneNumber.$error.required || frmSignUp.phoneNumber.$invalid) && frmSignUp.phoneNumber.$touched">Phone Number must be in the format ###-###-####</span>
+        </td>
+      </tr>
+      <tr>
+        <th>Favourite Dish:</th>
+        <td>
+          <input type="text" name="favouriteDish" ng-model="ctrl.user.favouriteDish" required />
+          <span ng-if="frmSignUp.favouriteDish.$error.required && frmSignUp.favouriteDish.$touched">Favourite Dish is required</span>
+          <span ng-if="ctrl.isInvalidDish">No such menu number exists.</span>
+        </td>
+      </tr>
+      <tr>
+        <th></th>
+        <td>
+          <button ng-disabled="frmSignUp.$invalid || frmSignUp.$pending" ng-click="ctrl.signUp()" class="btn btn-default">Submit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+
+<div ng-if="ctrl.success">
+  Your information has been saved.
+<div>
+
+</div>
